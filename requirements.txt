@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+python-multipart
+pydantic
+pydantic-settings
+langchain-core
+langchain-community
+langchain-google-genai
+langchain-chroma
+langchain-text-splitters
+chromadb
+pypdf
+python-dotenv
+rank-bm25
+langchain-huggingface
+sentence-transformers
