@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
-from backend.models.schemas import ChatRequest, ChatResponse
-from backend.services.chat import ChatService
-from backend.utils.logger import get_logger
+from models.schemas import ChatRequest, ChatResponse
+from services.chat import ChatService
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 router = APIRouter()
@@ -15,6 +15,11 @@ async def chat(request: ChatRequest):
             answer=result["answer"],
             sources=result["sources"],
             page_numbers=result["page_numbers"],
+            retrieved_chunks=result.get("retrieved_chunks", []),
+            knowledge_facts=result.get("knowledge_facts", []),
+            entity_list=result.get("entity_list", []),
+            relationship_list=result.get("relationship_list", []),
+            reasoning_summary=result.get("reasoning_summary", ""),
             confidence=result["confidence"]
         )
     except Exception as e:

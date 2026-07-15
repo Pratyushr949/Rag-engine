@@ -1,3 +1,4 @@
+import os
 from pydantic_settings import BaseSettings
 from pydantic import Field, validator
 
@@ -17,8 +18,8 @@ class Settings(BaseSettings):
     TOP_K: int = Field(default=3, gt=0, le=20)
     
     # Paths
-    UPLOAD_FOLDER: str = Field(default="backend/uploads")
-    CHROMA_DB_PATH: str = Field(default="backend/vector_db")
+    UPLOAD_FOLDER: str = Field(default="uploads")
+    CHROMA_DB_PATH: str = Field(default="vector_db")
     
     # Server
     HOST: str = Field(default="0.0.0.0")
@@ -31,6 +32,6 @@ class Settings(BaseSettings):
         return v
 
     class Config:
-        env_file = "backend/.env"
+        env_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
 
 settings = Settings()

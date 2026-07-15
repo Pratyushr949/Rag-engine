@@ -1,6 +1,6 @@
 import logging
 import sys
-from backend.config.settings import settings
+from config.settings import settings
 
 def get_logger(name: str) -> logging.Logger:
     """

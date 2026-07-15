@@ -2,7 +2,7 @@ import os
 from typing import List
 from langchain_core.documents import Document
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
-from backend.utils.logger import get_logger
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -25,4 +25,16 @@ class DocumentLoader:
             logger.warning(f"No .pdf files found in {docs_path}.")
             
         logger.info(f"Loaded {len(documents)} documents.")
+        return documents
+
+    @staticmethod
+    def load_document(file_path: str) -> List[Document]:
+        logger.info(f"Loading document from {file_path}...")
+        if not os.path.exists(file_path):
+            logger.error(f"File {file_path} does not exist.")
+            return []
+            
+        loader = PyPDFLoader(file_path)
+        documents = loader.load()
+        logger.info(f"Loaded {len(documents)} pages from {file_path}.")
         return documents

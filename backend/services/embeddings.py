@@ -1,5 +1,5 @@
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
-from backend.config.config import config
+from config.config import config
 
 
 class EmbeddingsService:

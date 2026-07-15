@@ -1,5 +1,5 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
-from backend.config.config import config
+from config.config import config
 
 
 class LLMService:

@@ -11,6 +11,4 @@ langchain-text-splitters
 chromadb
 pypdf
 python-dotenv
-rank-bm25
-langchain-huggingface
-sentence-transformers
+networkx

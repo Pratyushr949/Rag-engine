@@ -1,8 +1,8 @@
 from typing import List
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from backend.utils.logger import get_logger
-from backend.config.config import config
+from utils.logger import get_logger
+from config.config import config
 
 logger = get_logger(__name__)
 

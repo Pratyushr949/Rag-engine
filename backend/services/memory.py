@@ -1,6 +1,6 @@
 from typing import List, Dict
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage, BaseMessage
-from backend.utils.logger import get_logger
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 

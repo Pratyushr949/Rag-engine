@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
-import { UploadCloud, File, CheckCircle2, AlertCircle } from "lucide-react";
+import { UploadCloud, File, CheckCircle2, AlertCircle, X } from "lucide-react";
 import { uploadDocument } from "../services/api";
 import { cn } from "../utils/cn";
 
 export default function UploadPage() {
-  const [file, setFile] = useState(null);
+  const [files, setFiles] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -13,18 +13,27 @@ export default function UploadPage() {
   const fileInputRef = useRef(null);
 
   const handleFileChange = (e) => {
-    const selected = e.target.files?.[0];
-    validateAndSetFile(selected);
+    const selectedFiles = Array.from(e.target.files || []);
+    validateAndAddFiles(selectedFiles);
   };
 
-  const validateAndSetFile = (selectedFile) => {
+  const validateAndAddFiles = (selectedFiles) => {
     setError(null);
     setResult(null);
-    if (selectedFile && selectedFile.type === "application/pdf") {
-      setFile(selectedFile);
-    } else if (selectedFile) {
-      setError("Please select a valid PDF file.");
+    
+    const validFiles = selectedFiles.filter(f => f.type === "application/pdf");
+    
+    if (validFiles.length !== selectedFiles.length) {
+      setError("Some files were skipped. Only PDF files are supported.");
     }
+    
+    if (validFiles.length > 0) {
+      setFiles(prev => [...prev, ...validFiles]);
+    }
+  };
+
+  const removeFile = (indexToRemove) => {
+    setFiles(prev => prev.filter((_, idx) => idx !== indexToRemove));
   };
 
   const handleDragOver = (e) => {
@@ -39,24 +48,24 @@ export default function UploadPage() {
   const handleDrop = (e) => {
     e.preventDefault();
     setIsDragging(false);
-    const droppedFile = e.dataTransfer.files?.[0];
-    validateAndSetFile(droppedFile);
+    const droppedFiles = Array.from(e.dataTransfer.files || []);
+    validateAndAddFiles(droppedFiles);
   };
 
   const handleUpload = async () => {
-    if (!file) return;
+    if (files.length === 0) return;
     
     setIsUploading(true);
     setUploadProgress(0);
     setError(null);
     
     try {
-      const data = await uploadDocument(file, (progressEvent) => {
+      const data = await uploadDocument(files, (progressEvent) => {
         const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
         setUploadProgress(percentCompleted);
       });
       setResult(data);
-      setFile(null); // Clear after success
+      setFiles([]); // Clear after success
     } catch (err) {
       setError(err.response?.data?.detail || err.message || "An error occurred during upload.");
     } finally {
@@ -87,14 +96,15 @@ export default function UploadPage() {
           <UploadCloud className={cn("w-10 h-10 text-primary transition-transform duration-300", isDragging && "scale-110 -translate-y-1")} />
         </div>
         
-        <h3 className="text-xl font-semibold mb-2">Drop your PDF here</h3>
+        <h3 className="text-xl font-semibold mb-2">Drop your PDFs here</h3>
         <p className="text-muted-foreground mb-6 text-center max-w-sm">
-          Drag and drop your file, or click the button below to browse your computer.
+          Drag and drop multiple files, or click the button below to browse your computer.
         </p>
         
         <input 
           type="file" 
           accept=".pdf" 
+          multiple
           className="hidden" 
           ref={fileInputRef} 
           onChange={handleFileChange} 
@@ -104,33 +114,46 @@ export default function UploadPage() {
           onClick={() => fileInputRef.current?.click()}
           className="px-6 py-2.5 bg-secondary text-secondary-foreground font-medium rounded-lg hover:bg-secondary/80 transition-colors shadow-sm"
         >
-          Select File
+          Select Files
         </button>
       </div>
       
-      {file && (
-        <div className="mt-6 glass rounded-xl p-4 flex items-center justify-between animate-fade-in border border-primary/20 bg-primary/5">
-          <div className="flex items-center space-x-3 overflow-hidden">
-            <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0">
-              <File className="w-5 h-5 text-primary" />
-            </div>
-            <div className="min-w-0">
-              <p className="font-medium truncate">{file.name}</p>
-              <p className="text-xs text-muted-foreground">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
-            </div>
+      {files.length > 0 && (
+        <div className="mt-6 glass rounded-xl p-4 animate-fade-in border border-primary/20 bg-primary/5">
+          <div className="flex justify-between items-center mb-4 pb-2 border-b border-primary/10">
+            <h4 className="font-semibold text-sm">Selected Files ({files.length})</h4>
+            <button 
+              onClick={handleUpload}
+              disabled={isUploading}
+              className="px-5 py-2 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-70 shadow-md flex items-center"
+            >
+              {isUploading ? (
+                <>
+                  <div className="w-4 h-4 rounded-full border-2 border-primary-foreground/30 border-t-primary-foreground animate-spin mr-2" />
+                  Processing...
+                </>
+              ) : "Upload & Index All"}
+            </button>
           </div>
-          <button 
-            onClick={handleUpload}
-            disabled={isUploading}
-            className="ml-4 px-5 py-2 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-70 shadow-md shrink-0 flex items-center"
-          >
-            {isUploading ? (
-              <>
-                <div className="w-4 h-4 rounded-full border-2 border-primary-foreground/30 border-t-primary-foreground animate-spin mr-2" />
-                Processing...
-              </>
-            ) : "Upload & Index"}
-          </button>
+          
+          <div className="space-y-2 max-h-48 overflow-y-auto pr-2">
+            {files.map((file, idx) => (
+              <div key={idx} className="flex items-center justify-between bg-background/50 rounded p-2">
+                <div className="flex items-center space-x-3 overflow-hidden">
+                  <File className="w-4 h-4 text-primary shrink-0" />
+                  <p className="text-sm font-medium truncate">{file.name}</p>
+                  <p className="text-xs text-muted-foreground">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                </div>
+                <button 
+                  onClick={() => removeFile(idx)}
+                  disabled={isUploading}
+                  className="p-1 hover:bg-muted rounded text-muted-foreground hover:text-destructive transition-colors disabled:opacity-50"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       )}
       
@@ -165,12 +188,16 @@ export default function UploadPage() {
             
             <div className="flex space-x-6 text-sm">
               <div className="flex flex-col">
-                <span className="text-muted-foreground text-xs uppercase font-semibold">Pages</span>
+                <span className="text-muted-foreground text-xs uppercase font-semibold">Total Pages</span>
                 <span className="font-medium">{result.pages}</span>
               </div>
               <div className="flex flex-col">
                 <span className="text-muted-foreground text-xs uppercase font-semibold">Chunks Indexed</span>
                 <span className="font-medium">{result.chunks}</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-muted-foreground text-xs uppercase font-semibold">Files Processed</span>
+                <span className="font-medium">{result.documents_indexed}</span>
               </div>
             </div>
           </div>

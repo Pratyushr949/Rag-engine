@@ -5,13 +5,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 
-from backend.routes.upload import router as upload_router
-from backend.routes.chat import router as chat_router
-from backend.routes.reset import router as reset_router
-from backend.routes.health import router as health_router
+from routes.upload import router as upload_router
+from routes.chat import router as chat_router
+from routes.reset import router as reset_router
+from routes.health import router as health_router
+from routes.knowledge import router as knowledge_router
+from routes.network import router as network_router
 
-from backend.utils.logger import get_logger
-from backend.config.config import config
+from utils.logger import get_logger
+from config.config import config
 
 logger = get_logger(__name__)
 
@@ -66,9 +68,11 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 # Mount Routers
 app.include_router(upload_router, prefix="/api", tags=["Documents"])
 app.include_router(chat_router, prefix="/api", tags=["Chat"])
+app.include_router(knowledge_router, prefix="/api", tags=["Knowledge"])
+app.include_router(network_router, prefix="/api", tags=["Knowledge Graph"])
 app.include_router(reset_router, prefix="/api", tags=["System"])
 app.include_router(health_router, tags=["System"])
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("backend.app:app", host=config.HOST, port=config.PORT, reload=True)
+    uvicorn.run("app:app", host=config.HOST, port=config.PORT, reload=True)

@@ -1,9 +1,9 @@
 import os
 import shutil
 from fastapi import APIRouter, HTTPException
-from backend.models.schemas import ResetResponse
-from backend.utils.logger import get_logger
-from backend.config.config import config
+from models.schemas import ResetResponse
+from utils.logger import get_logger
+from config.config import config
 
 logger = get_logger(__name__)
 router = APIRouter()

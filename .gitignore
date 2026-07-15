@@ -1,22 +1,18 @@
-# Environment variables (contains API keys)
+# Environment
 .env
-
-# Vector database
-db/
+backend/.env
 
 # Python
-__pycache__/
-*.pyc
-*.pyo
 venv/
 .venv/
+__pycache__/
+*.pyc
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
+# Uploads & Vector DB
+backend/uploads/
+backend/vector_db/
 
-# OS
-.DS_Store
-Thumbs.db
+# Frontend
+node_modules/
+dist/
+build/

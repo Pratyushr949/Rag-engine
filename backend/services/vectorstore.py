@@ -2,9 +2,9 @@ import os
 from typing import List
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
-from backend.utils.logger import get_logger
-from backend.config.config import config
-from backend.services.embeddings import EmbeddingsService
+from utils.logger import get_logger
+from config.config import config
+from services.embeddings import EmbeddingsService
 
 logger = get_logger(__name__)
 

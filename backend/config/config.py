@@ -1,6 +1,5 @@
-import os
 from dotenv import load_dotenv
-from backend.config.settings import settings
+from config.settings import settings
 
 # Explicitly load python-dotenv
 load_dotenv()

@@ -10,9 +10,13 @@ const apiClient = axios.create({
   },
 });
 
-export const uploadDocument = async (file, onUploadProgress) => {
+export const uploadDocument = async (files, onUploadProgress) => {
   const formData = new FormData();
-  formData.append("file", file);
+  if (Array.isArray(files)) {
+    files.forEach(file => formData.append("files", file));
+  } else {
+    formData.append("files", files);
+  }
 
   const response = await apiClient.post("/upload", formData, {
     headers: {

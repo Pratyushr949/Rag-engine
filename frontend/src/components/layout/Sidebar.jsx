@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
-import { MessageSquare, UploadCloud, FileText } from "lucide-react";
+import { MessageSquare, UploadCloud, FileText, Network } from "lucide-react";
 import { cn } from "../../utils/cn";
 
 export default function Sidebar() {
   const navItems = [
     { name: "Chat", path: "/chat", icon: MessageSquare },
     { name: "Upload Documents", path: "/upload", icon: UploadCloud },
+    { name: "Knowledge Graph", path: "/graph", icon: Network },
   ];
 
   return (
