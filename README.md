@@ -1082,3 +1082,274 @@ ChromaDB      Relationship Extraction
 - Hybrid search architecture
 
 ---
+---
+
+# 📸 Project Demonstration
+
+## 🏠 Home Dashboard
+
+> *Replace this placeholder with a screenshot of your application's home page.*
+
+<p align="center">
+<img src="./assets/home.png" width="90%">
+</p>
+
+---
+
+## 📄 PDF Upload
+
+Users can upload one or multiple PDF documents directly through the web interface.
+
+### Features
+
+- Drag & Drop Upload
+- Multiple PDFs
+- Upload Progress
+- Automatic Processing
+- Instant Indexing
+
+<p align="center">
+<img src="./assets/upload.png" width="90%">
+</p>
+
+---
+
+## 💬 Chat Interface
+
+The conversational interface allows users to ask natural language questions about uploaded documents.
+
+Supported capabilities include:
+
+- Document Summarization
+- Question Answering
+- Follow-up Questions
+- Context-aware Responses
+- Multi-turn Conversation
+
+<p align="center">
+<img src="./assets/chat.png" width="90%">
+</p>
+
+---
+
+## 🌐 Knowledge Graph
+
+The extracted entities and relationships are visualized as an interactive knowledge graph.
+
+Features
+
+- Entity Visualization
+- Relationship Mapping
+- Connected Components
+- Graph Exploration
+
+<p align="center">
+<img src="./assets/graph.png" width="90%">
+</p>
+
+---
+
+## 📘 Open Knowledge Format (OKF)
+
+Every uploaded document is transformed into a structured representation.
+
+Example
+
+```json
+{
+  "document": "AI.pdf",
+  "entities": [
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Neural Networks"
+  ],
+  "relationships": [
+    {
+      "source": "Artificial Intelligence",
+      "relation": "includes",
+      "target": "Machine Learning"
+    }
+  ]
+}
+```
+
+---
+
+# 📊 Performance Characteristics
+
+| Component | Performance |
+|------------|-------------|
+| PDF Upload | Fast |
+| Chunk Generation | Automatic |
+| Embedding Generation | Gemini |
+| Vector Search | ChromaDB |
+| Knowledge Extraction | OKF |
+| Graph Construction | NetworkX |
+| Hybrid Retrieval | Enabled |
+| Response Generation | Gemini |
+
+---
+
+# 🎯 Supported Capabilities
+
+| Capability | Supported |
+|------------|-----------|
+| Multi PDF | ✅ |
+| Chat with PDFs | ✅ |
+| Semantic Search | ✅ |
+| Hybrid Retrieval | ✅ |
+| Open Knowledge Format | ✅ |
+| Knowledge Graph | ✅ |
+| Explainable AI | ✅ |
+| REST APIs | ✅ |
+| React Frontend | ✅ |
+| FastAPI Backend | ✅ |
+
+---
+
+# 💼 Enterprise Use Cases
+
+## 📑 Enterprise Document Search
+
+Employees can instantly search thousands of internal documents.
+
+---
+
+## 🏛 Government Documentation
+
+Retrieve policies, notifications, and regulations with contextual answers.
+
+---
+
+## 🏥 Healthcare
+
+Search medical protocols, research papers, and clinical documentation.
+
+---
+
+## ⚖ Legal Documents
+
+Navigate contracts, agreements, and legal documents efficiently.
+
+---
+
+## 🎓 Education
+
+Build AI-powered assistants for books, lecture notes, and research papers.
+
+---
+
+## 🏢 Corporate Knowledge Base
+
+Centralize organizational knowledge into an AI-powered searchable platform.
+
+---
+
+# 📈 Advantages over Traditional RAG
+
+| Traditional RAG | Hybrid RAG + OKF |
+|-----------------|------------------|
+| Vector Search Only | Vector + Knowledge Search |
+| Limited Context | Structured Context |
+| Weak Explainability | Explainable Responses |
+| No Knowledge Graph | Knowledge Graph |
+| No Entity Reasoning | Entity-Based Reasoning |
+| Higher Hallucination | Reduced Hallucination |
+| Difficult Multi-hop QA | Improved Multi-hop QA |
+
+---
+
+# 🔐 Security Considerations
+
+The project follows several secure development practices.
+
+- API keys stored in `.env`
+- Environment variables excluded from Git
+- Modular backend architecture
+- Stateless REST APIs
+- No secrets committed to repository
+- Session isolation
+- Configurable retrieval parameters
+
+---
+
+# 🧪 Testing Checklist
+
+- [x] Upload PDF
+- [x] Generate Chunks
+- [x] Create Embeddings
+- [x] Store in ChromaDB
+- [x] Extract Entities
+- [x] Extract Relationships
+- [x] Generate OKF
+- [x] Build Knowledge Graph
+- [x] Hybrid Retrieval
+- [x] Gemini Response
+- [x] React Frontend
+- [x] FastAPI Backend
+- [x] REST APIs
+
+---
+
+# 📦 Future Improvements
+
+- Docker Support
+- Kubernetes Deployment
+- Redis Cache
+- Neo4j Integration
+- User Authentication
+- PostgreSQL Metadata Storage
+- Multi-user Workspaces
+- Document Versioning
+- Streaming Responses
+- Azure Deployment
+- AWS Deployment
+- GCP Deployment
+- Role-Based Access Control
+- Observability with Langfuse
+- OpenTelemetry Support
+
+---
+
+# 🙌 Acknowledgements
+
+This project leverages several outstanding open-source technologies.
+
+- FastAPI
+- React
+- LangChain
+- ChromaDB
+- Google Gemini
+- NetworkX
+- Tailwind CSS
+- Vite
+
+---
+
+# ⭐ Support the Project
+
+If you found this repository useful:
+
+⭐ Star the repository
+
+🍴 Fork the project
+
+🛠 Contribute improvements
+
+📢 Share it with others
+
+---
+
+<div align="center">
+
+# 🚀 Hybrid RAG Engine
+
+### Enterprise Knowledge Retrieval using Hybrid RAG + Open Knowledge Format (OKF)
+
+**Built with ❤️ using Python, FastAPI, React, LangChain, ChromaDB, Google Gemini, and Open Knowledge Format (OKF).**
+
+---
+
+⭐ **If this project helped you, please consider giving it a star!**
+
+</div>
