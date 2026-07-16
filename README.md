@@ -1,314 +1,312 @@
-::: {align="center"}
+<div align="center">
+
 # 🚀 Hybrid RAG Engine
 
-### **Knowledge-Enhanced Retrieval using Open Knowledge Format (OKF)**
+### Enterprise Knowledge Retrieval using **Hybrid RAG + Open Knowledge Format (OKF)**
 
-`<img src="https://readme-typing-svg.herokuapp.com?font=Poppins&weight=700&size=24&duration=3500&pause=900&color=00C2FF&center=true&vCenter=true&width=900&lines=Hybrid+Retrieval+Augmented+Generation;FastAPI+%7C+React+%7C+Gemini+%7C+LangChain;Open+Knowledge+Format+(OKF);Knowledge+Graph+Powered+AI;Enterprise+Ready+Document+Assistant" />`{=html}
+<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=700&size=26&duration=3500&pause=1200&color=00C2FF&center=true&vCenter=true&width=1000&lines=Enterprise+Hybrid+RAG+Engine;FastAPI+%7C+React+%7C+Gemini+%7C+LangChain;Open+Knowledge+Format+(OKF);Knowledge+Graph+Powered+Retrieval;Explainable+AI+for+Enterprise+Documents;Production+Ready+AI+Platform" />
 
-![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi)
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react)
-![LangChain](https://img.shields.io/badge/LangChain-RAG-success?style=for-the-badge)
-![Gemini](https://img.shields.io/badge/Google-Gemini-orange?style=for-the-badge&logo=google)
-![ChromaDB](https://img.shields.io/badge/ChromaDB-VectorDB-red?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-:::
+<br>
 
-------------------------------------------------------------------------
+<img src="https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white"/>
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black"/>
+<img src="https://img.shields.io/badge/LangChain-Framework-success?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Google-Gemini-orange?style=for-the-badge&logo=google"/>
+<img src="https://img.shields.io/badge/ChromaDB-Vector%20Database-red?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Open%20Knowledge%20Format-OKF-purple?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Status-Production%20Ready-success?style=for-the-badge"/>
+
+<br><br>
+
+> **A next-generation Retrieval-Augmented Generation (RAG) platform that combines Semantic Search, Structured Knowledge Extraction, Knowledge Graphs, and Hybrid Retrieval to deliver highly accurate, explainable, and context-aware answers from enterprise documents.**
+
+</div>
+
+---
+
+# 📚 Table of Contents
+
+- [Overview](#-overview)
+- [Problem Statement](#-problem-statement)
+- [Solution](#-solution)
+- [Why Hybrid RAG + OKF?](#-why-hybrid-rag--okf)
+- [Feature Comparison](#-feature-comparison)
+- [Key Features](#-key-features)
+- [Project Highlights](#-project-highlights)
+
+---
 
 # 📖 Overview
 
-Hybrid RAG Engine is an enterprise-style Retrieval Augmented Generation
-system that combines **semantic vector retrieval** with **Open Knowledge
-Format (OKF)** and a **Knowledge Graph**.
+Traditional document search systems struggle with large volumes of unstructured information.
 
-Instead of relying only on vector similarity, the system extracts
-entities and relationships from uploaded PDFs, generates structured
-knowledge, and performs **Hybrid Retrieval** before sending context to
-Gemini.
+Although Retrieval-Augmented Generation (RAG) significantly improves Large Language Model (LLM) responses by retrieving relevant document chunks, traditional RAG systems still have several limitations:
 
-------------------------------------------------------------------------
+- Retrieval depends only on vector similarity.
+- Relationships between entities are ignored.
+- Multi-hop reasoning is weak.
+- Retrieved context is difficult to explain.
+- Hallucinations may still occur when semantic retrieval misses important connections.
+
+This project introduces a **Hybrid Retrieval Architecture** by integrating **Open Knowledge Format (OKF)** with traditional RAG.
+
+Instead of relying solely on vector embeddings, the system also builds a structured representation of document knowledge through entities, relationships, and knowledge graphs.
+
+The final response is generated after combining:
+
+- Semantic Context
+- Structured Knowledge
+- Relationship Graph
+- User Query
+- Conversational Context
+
+This architecture enables significantly more reliable and explainable document question answering.
+
+---
+
+# 🎯 Problem Statement
+
+Enterprise organizations generate thousands of documents every day, including:
+
+- Technical Documentation
+- Research Papers
+- Standard Operating Procedures
+- HR Policies
+- Financial Reports
+- Contracts
+- User Manuals
+- Compliance Documents
+
+Finding the correct information manually is time-consuming.
+
+Even traditional RAG systems often retrieve only semantically similar chunks without understanding:
+
+- relationships between concepts,
+- entity dependencies,
+- document hierarchy,
+- cross-page references.
+
+This results in incomplete answers and reduced explainability.
+
+---
+
+# 💡 Solution
+
+Hybrid RAG Engine introduces an additional knowledge layer called **Open Knowledge Format (OKF)**.
+
+The system performs two retrieval processes simultaneously:
+
+### 1️⃣ Semantic Retrieval
+
+Uses embeddings stored inside **ChromaDB** to retrieve semantically relevant chunks.
+
+---
+
+### 2️⃣ Knowledge Retrieval
+
+Extracts:
+
+- Entities
+- Relationships
+- Metadata
+- Knowledge Graph
+
+and stores them as structured OKF objects.
+
+---
+
+Finally,
+
+```
+Vector Retrieval
+          +
+Knowledge Retrieval
+          +
+Context Fusion
+          +
+Gemini LLM
+          =
+Explainable Response
+```
+
+---
+
+# 🚀 Why Hybrid RAG + OKF?
+
+Unlike traditional RAG systems, this project combines **semantic intelligence** with **structured knowledge reasoning**.
+
+This enables the model to answer questions using:
+
+- semantic similarity,
+- document relationships,
+- entity hierarchy,
+- graph traversal,
+- structured metadata,
+- conversational history.
+
+The result is significantly higher retrieval quality and better explainability.
+
+---
+
+# 📊 Feature Comparison
+
+| Capability | Traditional RAG | Hybrid RAG + OKF |
+|------------|-----------------|------------------|
+| Semantic Search | ✅ | ✅ |
+| Vector Database | ✅ | ✅ |
+| Entity Extraction | ❌ | ✅ |
+| Relationship Extraction | ❌ | ✅ |
+| Knowledge Graph | ❌ | ✅ |
+| Structured Knowledge | ❌ | ✅ |
+| Hybrid Retrieval | ❌ | ✅ |
+| Explainable AI | ❌ | ✅ |
+| Multi-hop Reasoning | Limited | Advanced |
+| Context Fusion | ❌ | ✅ |
+| Lower Hallucinations | ❌ | ✅ |
+| Enterprise Ready | Partial | ✅ |
+
+---
 
 # ✨ Key Features
 
--   📄 Multi-PDF Upload
--   🧩 Intelligent Chunking
--   🧠 Gemini Embeddings
--   📦 ChromaDB Vector Storage
--   🕸 Entity Extraction
--   🔗 Relationship Extraction
--   📚 Open Knowledge Format (OKF)
--   🌐 Knowledge Graph Visualization
--   🔥 Hybrid Retrieval
--   💬 Conversational Chat
--   📊 Explainable Responses
--   ⚡ REST APIs
--   🎨 React Dashboard
--   📈 Production-Ready Modular Architecture
+## 📄 Intelligent PDF Processing
 
-------------------------------------------------------------------------
+- Multi-document upload
+- Automatic document parsing
+- Intelligent text extraction
+- Metadata preservation
 
-# 🏗 System Architecture
+---
 
-``` text
-                    ┌─────────────────────────────┐
-                    │       React Frontend        │
-                    └──────────────┬──────────────┘
-                                   │
-                            REST API Calls
-                                   │
-                    ┌──────────────▼──────────────┐
-                    │      FastAPI Backend        │
-                    └──────────────┬──────────────┘
-                                   │
-          ┌────────────────────────┼────────────────────────┐
-          ▼                        ▼                        ▼
-      Upload API               Chat API              Knowledge API
-          │
-          ▼
-      PDF Loader
-          │
-          ▼
-   Text Extraction
-          │
-   ┌──────┴───────────────┐
-   ▼                      ▼
-RAG Pipeline         OKF Pipeline
-   │                      │
-Chunking          Entity Extraction
-   │                      │
-Embeddings     Relationship Extraction
-   │                      │
-ChromaDB         OKF JSON Generator
-   └──────────────┬───────────────┘
-                  ▼
-          Hybrid Fusion Retriever
-                  ▼
-             Gemini LLM
-                  ▼
-          Explainable Answer
-```
+## ✂️ Advanced Chunking
 
-------------------------------------------------------------------------
+- Configurable chunk size
+- Chunk overlap support
+- Context-aware splitting
+- Optimized retrieval quality
 
-# 🔄 End-to-End Workflow
+---
 
-``` text
-User Uploads PDF
-        │
-        ▼
-Extract Document Text
-        │
-        ▼
-Split into Chunks
-        │
-        ├──────────────┐
-        ▼              ▼
-Generate        Extract Entities
-Embeddings      Extract Relations
-        │              │
-        ▼              ▼
- ChromaDB         OKF Generator
-        └──────┬───────┘
-               ▼
-      Hybrid Context Builder
-               ▼
-        User asks Question
-               ▼
-   Vector Search + OKF Search
-               ▼
-          Context Fusion
-               ▼
-         Gemini Generation
-               ▼
-      Final Explainable Answer
-```
+## 🧠 AI-Powered Embeddings
 
-------------------------------------------------------------------------
+- Google Gemini embeddings
+- High-dimensional semantic vectors
+- Efficient similarity search
 
-# 🧠 Pipelines
+---
 
-## RAG Pipeline
+## 📦 ChromaDB Vector Storage
 
-PDF → Chunking → Embeddings → ChromaDB → Similarity Search → Gemini
+- Fast semantic retrieval
+- Persistent storage
+- Optimized indexing
+- Low-latency querying
 
-## OKF Pipeline
+---
 
-PDF → Entity Extraction → Relationship Extraction → OKF JSON → Knowledge
-Store
+## 🌐 Open Knowledge Format (OKF)
 
-## Hybrid Retrieval Pipeline
+Automatically generates:
 
-Vector Retrieval + OKF Retrieval → Context Fusion → Gemini → Answer
+- Entities
+- Relationships
+- Attributes
+- Document metadata
+- Structured knowledge
 
-------------------------------------------------------------------------
+---
 
-# 📂 Folder Structure
+## 🔗 Knowledge Graph
 
-``` text
-rag-engine/
-├── backend/
-│   ├── app.py
-│   ├── config/
-│   ├── routes/
-│   ├── services/
-│   │   ├── chunking.py
-│   │   ├── embeddings.py
-│   │   ├── retrieval.py
-│   │   ├── fusion_retriever.py
-│   │   ├── entity_extractor.py
-│   │   ├── relationship_extractor.py
-│   │   ├── okf_generator.py
-│   │   └── knowledge_storage.py
-│   ├── uploads/
-│   ├── vector_db/
-│   └── knowledge_store/
-├── frontend/
-│   ├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-├── requirements.txt
-└── README.md
-```
+Creates graph representation of:
 
-------------------------------------------------------------------------
+- People
+- Organizations
+- Technologies
+- Products
+- Concepts
+- Dependencies
 
-# 🛠 Technology Stack
+---
 
-  Category          Technology
-  ----------------- -----------------------------
-  Frontend          React, Vite, Tailwind CSS
-  Backend           FastAPI, Uvicorn
-  LLM               Google Gemini
-  Framework         LangChain
-  Vector DB         ChromaDB
-  Knowledge Layer   Open Knowledge Format (OKF)
-  Graph Engine      NetworkX
-  Language          Python
-  API               REST
+## 🔥 Hybrid Retrieval
 
-------------------------------------------------------------------------
+Combines:
 
-# 🚀 Installation
+- Vector Search
+- Knowledge Search
+- Context Fusion
+- Conversational Memory
 
-``` bash
-git clone https://github.com/Pratyushr949/Rag-engine.git
-cd Rag-engine
+before generating the final response.
 
-python -m venv venv
+---
 
-# Windows
-venv\Scripts\activate
+## 💬 Conversational AI
 
-# Linux / macOS
-source venv/bin/activate
+Supports:
 
-pip install -r requirements.txt
+- Multi-turn conversations
+- Context preservation
+- Memory-aware responses
+- Follow-up questions
 
-cd frontend
-npm install
-```
+---
 
-------------------------------------------------------------------------
+## ⚡ REST API Architecture
 
-# 🔑 Environment Variables
+Modular FastAPI backend with:
 
-``` env
-GOOGLE_API_KEY=YOUR_GEMINI_API_KEY
-MODEL_NAME=gemini-1.5-flash
-CHUNK_SIZE=1000
-CHUNK_OVERLAP=200
-TOP_K=4
-```
+- Upload APIs
+- Chat APIs
+- Knowledge APIs
+- Graph APIs
+- Session APIs
 
-------------------------------------------------------------------------
+---
 
-# ▶ Running
+## 🎨 Modern React Frontend
 
-Backend
+Interactive dashboard providing:
 
-``` bash
-cd backend
-uvicorn app:app --reload
-```
+- PDF Upload
+- Chat Interface
+- Knowledge Graph Viewer
+- Session Reset
+- Responsive UI
 
-Frontend
+---
 
-``` bash
-cd frontend
-npm run dev
-```
+# 🌟 Project Highlights
 
-------------------------------------------------------------------------
+✅ Hybrid Retrieval Architecture
 
-# 🌍 REST APIs
+✅ Open Knowledge Format (OKF)
 
-  Method   Endpoint             Purpose
-  -------- -------------------- -------------------------
-  POST     /api/upload          Upload PDFs
-  POST     /api/chat            Ask questions
-  GET      /api/knowledge       OKF data
-  GET      /api/entities        Extracted entities
-  GET      /api/relationships   Extracted relationships
-  GET      /api/graph           Graph data
-  DELETE   /api/reset           Reset session
+✅ Knowledge Graph Generation
 
-------------------------------------------------------------------------
+✅ Explainable AI
 
-# 📈 Advantages
+✅ Enterprise Modular Architecture
 
--   Lower hallucinations
--   Explainable AI
--   Semantic + Structured retrieval
--   Knowledge graph support
--   Modular architecture
--   Easy extensibility
--   Production-ready APIs
+✅ Production-ready REST APIs
 
-------------------------------------------------------------------------
+✅ FastAPI Backend
 
-# 🗺 Roadmap
+✅ React Frontend
 
--   Docker
--   Redis Cache
--   Neo4j Integration
--   Authentication
--   Multi-user support
--   Cloud Deployment
--   Kubernetes
--   CI/CD
+✅ Google Gemini Integration
 
-------------------------------------------------------------------------
+✅ LangChain Framework
 
-# 📷 Screenshots
+✅ ChromaDB Vector Database
 
-Replace with your screenshots:
+✅ Multi-document Question Answering
 
--   Home
--   Upload
--   Chat
--   Knowledge
--   Graph
--   Swagger
+✅ Extensible Service-Oriented Design
 
-------------------------------------------------------------------------
+---
 
-# 🤝 Contributing
-
-Fork → Create Branch → Commit → Push → Pull Request
-
-------------------------------------------------------------------------
-
-# 📄 License
-
-MIT License
-
-------------------------------------------------------------------------
-
-::: {align="center"}
-## ⭐ Star this repository if you found it useful!
-
-**Built with ❤️ using FastAPI, React, Gemini, LangChain, ChromaDB and
-Open Knowledge Format (OKF).**
-:::
+> 🚀 **Hybrid RAG Engine bridges the gap between semantic retrieval and structured knowledge reasoning, enabling enterprise-grade document intelligence with significantly improved accuracy, explainability, and contextual understanding.**
