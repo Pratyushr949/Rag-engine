@@ -684,3 +684,401 @@ This architecture separates every responsibility into its own service, making th
 - ✅ Extensible
 - ✅ Cloud Deployable
 - ✅ Enterprise Friendly
+---
+
+# 📂 Project Structure
+
+The project follows a modular architecture where each component has a dedicated responsibility.
+
+```text
+Hybrid-RAG-Engine/
+│
+├── backend/
+│   │
+│   ├── app.py                    # FastAPI Entry Point
+│   │
+│   ├── config/
+│   │      ├── config.py
+│   │      └── settings.py
+│   │
+│   ├── routes/
+│   │      ├── upload.py
+│   │      ├── chat.py
+│   │      ├── knowledge.py
+│   │      ├── graph.py
+│   │      └── reset.py
+│   │
+│   ├── services/
+│   │      ├── loader.py
+│   │      ├── chunking.py
+│   │      ├── embeddings.py
+│   │      ├── vectorstore.py
+│   │      ├── retrieval.py
+│   │      ├── fusion_retriever.py
+│   │      ├── entity_extractor.py
+│   │      ├── relationship_extractor.py
+│   │      ├── okf_generator.py
+│   │      ├── knowledge_storage.py
+│   │      ├── chat.py
+│   │      ├── memory.py
+│   │      └── llm.py
+│   │
+│   ├── models/
+│   │
+│   ├── uploads/
+│   │
+│   ├── vector_db/
+│   │
+│   └── knowledge_store/
+│
+├── frontend/
+│   │
+│   ├── src/
+│   │     ├── components/
+│   │     ├── pages/
+│   │     ├── services/
+│   │     └── App.jsx
+│   │
+│   ├── package.json
+│   └── vite.config.js
+│
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
+
+---
+
+# 🛠 Technology Stack
+
+| Category | Technology |
+|-----------|------------|
+| Programming Language | Python 3.11 |
+| Backend Framework | FastAPI |
+| Frontend | React + Vite |
+| Styling | Tailwind CSS |
+| LLM | Google Gemini |
+| AI Framework | LangChain |
+| Vector Database | ChromaDB |
+| Knowledge Layer | Open Knowledge Format (OKF) |
+| Knowledge Graph | NetworkX |
+| API Standard | REST |
+| Package Manager | pip + npm |
+| Documentation | Swagger UI |
+
+---
+
+# 📦 Backend Dependencies
+
+Major backend libraries:
+
+- FastAPI
+- Uvicorn
+- LangChain
+- Google Generative AI
+- ChromaDB
+- NetworkX
+- Pydantic
+- Python-dotenv
+- NumPy
+- Pandas
+
+---
+
+# 🎨 Frontend Dependencies
+
+- React
+- Vite
+- Tailwind CSS
+- Axios
+- React Router
+
+---
+
+# 🚀 Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/<username>/Hybrid-RAG-Engine.git
+```
+
+```bash
+cd Hybrid-RAG-Engine
+```
+
+---
+
+## Create Virtual Environment
+
+Windows
+
+```bash
+python -m venv venv
+```
+
+Activate
+
+```bash
+venv\Scripts\activate
+```
+
+Linux / macOS
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+---
+
+## Install Backend
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Install Frontend
+
+```bash
+cd frontend
+
+npm install
+```
+
+---
+
+# 🔑 Environment Variables
+
+Create
+
+```
+backend/.env
+```
+
+Example
+
+```env
+GOOGLE_API_KEY=YOUR_GEMINI_API_KEY
+
+MODEL_NAME=gemini-1.5-flash
+
+CHUNK_SIZE=1000
+
+CHUNK_OVERLAP=200
+
+TOP_K_RESULTS=5
+```
+
+Never commit `.env` to GitHub.
+
+---
+
+# ▶ Running the Project
+
+## Start Backend
+
+```bash
+cd backend
+
+uvicorn app:app --reload
+```
+
+Backend URL
+
+```
+http://localhost:8000
+```
+
+Swagger
+
+```
+http://localhost:8000/docs
+```
+
+---
+
+## Start Frontend
+
+```bash
+cd frontend
+
+npm run dev
+```
+
+Frontend
+
+```
+http://localhost:5173
+```
+
+---
+
+# 🌍 REST APIs
+
+## Upload PDF
+
+```
+POST /api/upload
+```
+
+Uploads one or more PDF documents.
+
+---
+
+## Chat
+
+```
+POST /api/chat
+```
+
+Ask questions about uploaded documents.
+
+---
+
+## Knowledge
+
+```
+GET /api/knowledge
+```
+
+Returns generated OKF.
+
+---
+
+## Knowledge Graph
+
+```
+GET /api/graph
+```
+
+Returns graph nodes and edges.
+
+---
+
+## Entities
+
+```
+GET /api/entities
+```
+
+Returns extracted entities.
+
+---
+
+## Relationships
+
+```
+GET /api/relationships
+```
+
+Returns extracted relationships.
+
+---
+
+## Reset
+
+```
+DELETE /api/reset
+```
+
+Clears uploaded documents, vector database, and session.
+
+---
+
+# 📡 Example Request
+
+```http
+POST /api/chat
+```
+
+```json
+{
+  "question": "Summarize the uploaded document."
+}
+```
+
+---
+
+# 📤 Example Response
+
+```json
+{
+  "answer": "The uploaded document explains Hybrid Retrieval Augmented Generation using Open Knowledge Format.",
+  "sources": [
+    "Page 2",
+    "Page 5"
+  ],
+  "confidence": 0.94
+}
+```
+
+---
+
+# 🧩 Backend Modules
+
+| Module | Purpose |
+|----------|----------|
+| Loader | Reads PDF documents |
+| Chunking | Splits text into chunks |
+| Embeddings | Creates vector embeddings |
+| Vector Store | Stores embeddings in ChromaDB |
+| Retrieval | Semantic search |
+| Entity Extractor | Extracts important entities |
+| Relationship Extractor | Finds entity relationships |
+| OKF Generator | Creates structured knowledge |
+| Knowledge Storage | Stores OKF objects |
+| Fusion Retriever | Combines semantic + knowledge retrieval |
+| Chat Service | Builds prompts |
+| LLM Service | Generates final responses |
+
+---
+
+# 🔄 Request Lifecycle
+
+```text
+User Uploads PDF
+        │
+        ▼
+Upload API
+        │
+        ▼
+Loader
+        │
+        ▼
+Chunking
+        │
+        ├───────────────┐
+        ▼               ▼
+Embeddings        Entity Extraction
+        │               │
+        ▼               ▼
+ChromaDB      Relationship Extraction
+        │               │
+        │         OKF Generator
+        │               │
+        └──────┬────────┘
+               ▼
+      Hybrid Fusion Retriever
+               ▼
+         Google Gemini
+               ▼
+        Final Response
+```
+
+---
+
+# 📌 Design Principles
+
+- Modular architecture
+- Separation of concerns
+- Explainable AI
+- Extensible services
+- Enterprise-ready APIs
+- Scalable retrieval pipeline
+- Knowledge-first reasoning
+- Hybrid search architecture
+
+---
