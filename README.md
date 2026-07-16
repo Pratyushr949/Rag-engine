@@ -481,53 +481,28 @@ H --> I[Knowledge Graph]
 The Hybrid Retriever combines semantic retrieval and structured retrieval before sending context to Gemini.
 
 ```mermaid
-flowchart LR
+flowchart TD
 
-Question
+Q[User Question]
 
--->
+Q --> VS[Vector Retrieval]
 
-Vector Search
+Q --> KS[Knowledge Retrieval]
 
--->
+VS --> VC[Semantic Context]
 
-Semantic Context
+KS --> KC[Structured Knowledge]
 
-Semantic Context
+VC --> CF[Context Fusion Engine]
 
--->
+KC --> CF
 
-Fusion Engine
+CF --> GP[Prompt Builder]
 
-Question
+GP --> LLM[Google Gemini]
 
--->
-
-Knowledge Search
-
--->
-
-Structured Context
-
-Structured Context
-
--->
-
-Fusion Engine
-
-Fusion Engine
-
--->
-
-Gemini
-
--->
-
-Final Answer
-
+LLM --> R[Final Response]
 ```
-
----
 
 # 🌐 Knowledge Graph Architecture
 
