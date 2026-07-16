@@ -455,44 +455,26 @@ Gemini --> Answer
 
 # 📘 Open Knowledge Format (OKF) Pipeline
 
-The OKF pipeline extracts structured knowledge from documents.
-
 ```mermaid
 flowchart LR
 
-PDF
+A[PDF Upload]
+--> B[Document Loader]
 
--->
+B --> C[Text Extraction]
 
-OCR / Loader
+C --> D[Entity Extraction]
 
--->
+D --> E[Relationship Extraction]
 
-Entity Extraction
+E --> F[Metadata Extraction]
 
--->
+F --> G[OKF Generator]
 
-Relationship Extraction
+G --> H[(Knowledge Store)]
 
--->
-
-Metadata Extraction
-
--->
-
-OKF Generator
-
--->
-
-Knowledge Store
-
--->
-
-Knowledge Graph
-
+H --> I[Knowledge Graph]
 ```
-
----
 
 # 🔥 Hybrid Retrieval Pipeline
 
