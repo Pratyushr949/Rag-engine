@@ -310,3 +310,420 @@ Interactive dashboard providing:
 ---
 
 > 🚀 **Hybrid RAG Engine bridges the gap between semantic retrieval and structured knowledge reasoning, enabling enterprise-grade document intelligence with significantly improved accuracy, explainability, and contextual understanding.**
+---
+
+# 🏗️ System Architecture
+
+The Hybrid RAG Engine follows a modular microservice-inspired architecture where each component is responsible for a single stage of the document intelligence pipeline.
+
+```mermaid
+flowchart LR
+
+subgraph Frontend
+A[React Dashboard]
+B[Upload Page]
+C[Chat Page]
+D[Knowledge Graph]
+end
+
+subgraph Backend
+E[FastAPI Server]
+F[Upload API]
+G[Chat API]
+H[Knowledge API]
+I[Reset API]
+end
+
+subgraph Processing
+J[PDF Loader]
+K[Chunking Engine]
+L[Embedding Generator]
+M[Entity Extractor]
+N[Relationship Extractor]
+O[OKF Generator]
+end
+
+subgraph Storage
+P[(ChromaDB)]
+Q[(Knowledge Store)]
+R[(Session Memory)]
+end
+
+subgraph AI
+S[Hybrid Fusion Retriever]
+T[Gemini LLM]
+U[Final Response]
+end
+
+A --> E
+B --> F
+C --> G
+D --> H
+
+F --> J
+J --> K
+
+K --> L
+K --> M
+
+M --> N
+N --> O
+
+L --> P
+O --> Q
+
+G --> S
+P --> S
+Q --> S
+R --> S
+
+S --> T
+T --> U
+```
+
+---
+
+# 🔄 End-to-End Workflow
+
+The following workflow illustrates how the complete system processes a PDF and answers user questions.
+
+```mermaid
+flowchart TD
+
+A[User Uploads PDF]
+
+A --> B[Extract Text]
+
+B --> C[Split into Chunks]
+
+C --> D[Generate Embeddings]
+
+D --> E[Store in ChromaDB]
+
+C --> F[Entity Extraction]
+
+F --> G[Relationship Extraction]
+
+G --> H[Generate OKF]
+
+H --> I[Store Structured Knowledge]
+
+J[User asks Question]
+
+J --> K[Hybrid Retriever]
+
+E --> K
+
+I --> K
+
+K --> L[Context Fusion]
+
+L --> M[Google Gemini]
+
+M --> N[Explainable Answer]
+
+```
+
+---
+
+# 🧠 Traditional RAG Pipeline
+
+The semantic retrieval pipeline retrieves document chunks based on vector similarity.
+
+```mermaid
+flowchart LR
+
+PDF --> Loader
+
+Loader --> Chunking
+
+Chunking --> Embeddings
+
+Embeddings --> ChromaDB
+
+Question --> Retriever
+
+ChromaDB --> Retriever
+
+Retriever --> Gemini
+
+Gemini --> Answer
+
+```
+
+---
+
+# 📘 Open Knowledge Format (OKF) Pipeline
+
+The OKF pipeline extracts structured knowledge from documents.
+
+```mermaid
+flowchart LR
+
+PDF
+
+-->
+
+OCR / Loader
+
+-->
+
+Entity Extraction
+
+-->
+
+Relationship Extraction
+
+-->
+
+Metadata Extraction
+
+-->
+
+OKF Generator
+
+-->
+
+Knowledge Store
+
+-->
+
+Knowledge Graph
+
+```
+
+---
+
+# 🔥 Hybrid Retrieval Pipeline
+
+The Hybrid Retriever combines semantic retrieval and structured retrieval before sending context to Gemini.
+
+```mermaid
+flowchart LR
+
+Question
+
+-->
+
+Vector Search
+
+-->
+
+Semantic Context
+
+Semantic Context
+
+-->
+
+Fusion Engine
+
+Question
+
+-->
+
+Knowledge Search
+
+-->
+
+Structured Context
+
+Structured Context
+
+-->
+
+Fusion Engine
+
+Fusion Engine
+
+-->
+
+Gemini
+
+-->
+
+Final Answer
+
+```
+
+---
+
+# 🌐 Knowledge Graph Architecture
+
+Relationships extracted from documents are represented as a graph.
+
+```mermaid
+graph TD
+
+PDF
+
+-->
+
+Entities
+
+Entities
+
+-->
+
+Person
+
+Entities
+
+-->
+
+Organization
+
+Entities
+
+-->
+
+Technology
+
+Entities
+
+-->
+
+Product
+
+Entities
+
+-->
+
+Concept
+
+Person --> KnowledgeGraph
+
+Organization --> KnowledgeGraph
+
+Technology --> KnowledgeGraph
+
+Product --> KnowledgeGraph
+
+Concept --> KnowledgeGraph
+
+KnowledgeGraph --> HybridRetriever
+
+```
+
+---
+
+# ⚙ Backend Request Flow
+
+Every API request follows the following lifecycle.
+
+```mermaid
+sequenceDiagram
+
+participant User
+
+participant React
+
+participant FastAPI
+
+participant Services
+
+participant ChromaDB
+
+participant OKF
+
+participant Gemini
+
+User->>React: Upload PDF
+
+React->>FastAPI: POST /upload
+
+FastAPI->>Services: Process Document
+
+Services->>ChromaDB: Store Embeddings
+
+Services->>OKF: Generate Knowledge
+
+OKF-->>Services: Structured Knowledge
+
+Services-->>FastAPI: Success
+
+FastAPI-->>React: Upload Complete
+
+User->>React: Ask Question
+
+React->>FastAPI: POST /chat
+
+FastAPI->>Services: Hybrid Retrieval
+
+Services->>ChromaDB: Vector Search
+
+Services->>OKF: Knowledge Search
+
+ChromaDB-->>Services: Context
+
+OKF-->>Services: Structured Context
+
+Services->>Gemini: Final Prompt
+
+Gemini-->>Services: Response
+
+Services-->>React: Final Answer
+
+```
+
+---
+
+# ⚙ Backend Service Layer
+
+The backend is divided into independent service modules.
+
+| Service | Responsibility |
+|----------|----------------|
+| **Loader Service** | Extract text from uploaded PDF |
+| **Chunking Service** | Split documents into semantic chunks |
+| **Embedding Service** | Generate Gemini embeddings |
+| **Vector Store Service** | Store embeddings in ChromaDB |
+| **Entity Extractor** | Detect entities from document |
+| **Relationship Extractor** | Discover relationships between entities |
+| **OKF Generator** | Create structured Open Knowledge Format |
+| **Knowledge Store** | Store OKF objects |
+| **Fusion Retriever** | Combine vector + structured retrieval |
+| **Chat Service** | Prepare final LLM prompt |
+| **LLM Service** | Generate response using Gemini |
+
+---
+
+# 🔍 Retrieval Strategy
+
+The system follows a **Hybrid Retrieval Strategy**.
+
+```text
+                 User Question
+                       │
+         ┌─────────────┴─────────────┐
+         │                           │
+         ▼                           ▼
+ Semantic Retrieval          Knowledge Retrieval
+         │                           │
+         ▼                           ▼
+   ChromaDB Search            OKF Knowledge Search
+         │                           │
+         └─────────────┬─────────────┘
+                       ▼
+               Context Fusion Engine
+                       ▼
+               Prompt Construction
+                       ▼
+                Google Gemini LLM
+                       ▼
+                Explainable Response
+```
+
+---
+
+# 💡 Why this Architecture?
+
+This architecture separates every responsibility into its own service, making the system:
+
+- ✅ Highly Modular
+- ✅ Easily Scalable
+- ✅ Easy to Maintain
+- ✅ Production Ready
+- ✅ Explainable
+- ✅ Extensible
+- ✅ Cloud Deployable
+- ✅ Enterprise Friendly
